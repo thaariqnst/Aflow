@@ -2,6 +2,11 @@ package com.thaariqnst.aflow.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+val colorAccent = Color(0xFF2BEE8C)
+
+val bgWhite = Color(0xFFF6F8F7)
+val black = Color(0xFF111827)
+
 val Purple80 = Color(0xFFD0BCFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)
 val Pink80 = Color(0xFFEFB8C8)
