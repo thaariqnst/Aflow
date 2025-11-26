@@ -22,7 +22,6 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -41,7 +40,7 @@ fun OnboardingScreen(
 ) {
     var onBoardingPage: Int by remember { mutableIntStateOf(0) }
     val onboardingPagerState = rememberPagerState(
-        initialPage = 3,
+        initialPage = 0,
         pageCount = { 4 }
     )
     val coroutineScope = rememberCoroutineScope()
@@ -63,97 +62,94 @@ fun OnboardingScreen(
                 )
             }
 
-            Row(
-                Modifier
-                    .wrapContentHeight()
-                    .fillMaxWidth()
-                    .weight(1f),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                if (onboardingPagerState.currentPage != 0){
-                    repeat(onboardingPagerState.pageCount) { iteration ->
-                        val color = if (onboardingPagerState.currentPage == iteration) colorAccent else Color.LightGray
-                        Box(
-                            modifier = Modifier
-                                .padding(2.dp)
-                                .clip(CircleShape)
-                                .background(color)
-                                .size(8.dp)
-                        )
-                    }
-                }
-            }
-
-            when (onboardingPagerState.currentPage) {
-                0 -> {
-                    Column(
-                        modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 32.dp),
-                        verticalArrangement = Arrangement.Bottom
-                    ) {
-                        Button(
-                            modifier = Modifier.fillMaxWidth().height(48.dp),
-                            colors = ButtonColors(colorAccent, black, colorAccent, black),
-                            shape = RoundedCornerShape(99.dp),
-                            onClick = {
-                                coroutineScope.launch {
-                                    onboardingPagerState.animateScrollToPage(1)
-                                }
-                            }
-                        ) {
-                            Text(
-                                modifier = Modifier.fillMaxWidth(),
-                                textAlign = TextAlign.Center,
-                                style = Title4,
-                                text = LocaleString.GET_STARTED
+            Column {
+                Row(
+                    Modifier
+                        .wrapContentHeight()
+                        .fillMaxWidth()
+                        .weight(1f),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    if (onboardingPagerState.currentPage != 0){
+                        repeat(onboardingPagerState.pageCount) { iteration ->
+                            val color = if (onboardingPagerState.currentPage == iteration) colorAccent else Color.LightGray
+                            Box(
+                                modifier = Modifier
+                                    .padding(2.dp)
+                                    .clip(CircleShape)
+                                    .background(color)
+                                    .size(8.dp)
                             )
                         }
                     }
                 }
 
-                else -> {
-                    Column(
-                        modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 32.dp),
-                        verticalArrangement = Arrangement.Bottom
-                    ) {
-                        Button(
-                            modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp).height(48.dp),
-                            colors = ButtonColors(colorAccent, black, colorAccent, black),
-                            shape = RoundedCornerShape(99.dp),
-                            onClick = {
-                                coroutineScope.launch {
-                                    if (onboardingPagerState.currentPage <= 4) onboardingPagerState.animateScrollToPage(onboardingPagerState.currentPage + 1)
+                when (onboardingPagerState.currentPage) {
+                    0 -> {
+                        Column(
+                            modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 32.dp),
+                            verticalArrangement = Arrangement.Bottom
+                        ) {
+                            Button(
+                                modifier = Modifier.fillMaxWidth().height(48.dp),
+                                colors = ButtonColors(colorAccent, black, colorAccent, black),
+                                shape = RoundedCornerShape(99.dp),
+                                onClick = {
+                                    coroutineScope.launch {
+                                        onboardingPagerState.animateScrollToPage(1)
+                                    }
                                 }
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    textAlign = TextAlign.Center,
+                                    style = Title4,
+                                    text = LocaleString.GET_STARTED
+                                )
                             }
-                        ) {
-                            Text(
-                                modifier = Modifier.fillMaxWidth(),
-                                textAlign = TextAlign.Center,
-                                style = Title4,
-                                text = LocaleString.CONTINUE
-                            )
                         }
+                    }
 
-                        Button(
-                            modifier = Modifier.fillMaxWidth().height(48.dp),
-                            colors = ButtonColors(Color.Transparent, black, Color.Transparent, black),
-                            onClick = onSkipClicked
+                    else -> {
+                        Column(
+                            modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 32.dp),
+                            verticalArrangement = Arrangement.Bottom
                         ) {
-                            Text(
-                                textAlign = TextAlign.Center,
-                                style = Title4,
-                                text = LocaleString.SKIP
-                            )
+                            Button(
+                                modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp).height(48.dp),
+                                colors = ButtonColors(colorAccent, black, colorAccent, black),
+                                shape = RoundedCornerShape(99.dp),
+                                onClick = {
+                                    coroutineScope.launch {
+                                        if (onboardingPagerState.currentPage <= 4) onboardingPagerState.animateScrollToPage(onboardingPagerState.currentPage + 1)
+                                    }
+                                }
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    textAlign = TextAlign.Center,
+                                    style = Title4,
+                                    text = LocaleString.CONTINUE
+                                )
+                            }
+
+                            Button(
+                                modifier = Modifier.fillMaxWidth().height(48.dp),
+                                colors = ButtonColors(Color.Transparent, black, Color.Transparent, black),
+                                onClick = onSkipClicked
+                            ) {
+                                Text(
+                                    textAlign = TextAlign.Center,
+                                    style = Title4,
+                                    text = LocaleString.SKIP
+                                )
+                            }
                         }
                     }
                 }
             }
         }
     }
-}
-
-@Composable
-fun OnboardingBtn(page: Int) {
-
 }
 
 @Preview(showSystemUi = true)

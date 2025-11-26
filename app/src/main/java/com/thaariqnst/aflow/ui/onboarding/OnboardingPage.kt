@@ -1,9 +1,7 @@
 package com.thaariqnst.aflow.ui.onboarding
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
@@ -18,7 +16,6 @@ import com.thaariqnst.aflow.R
 import com.thaariqnst.aflow.data.LocaleString
 import com.thaariqnst.aflow.ui.theme.Body
 import com.thaariqnst.aflow.ui.theme.Title1
-import com.thaariqnst.aflow.ui.theme.bgWhite
 
 @Composable
 fun OnboardingPage(modifier: Modifier, page: Int) {
@@ -32,16 +29,17 @@ fun OnboardingPage(modifier: Modifier, page: Int) {
             contentScale = ContentScale.FillWidth
         )
 
-        Column {
+        Column(
+            modifier = Modifier.padding(horizontal = 16.dp)
+        ) {
             Text(
-                modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp).padding(horizontal = 24.dp),
+                modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
                 style = Title1,
                 text = getOnboardingTitle(page)
             )
             Text(
-                modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp).padding(horizontal = 16.dp),
                 textAlign = TextAlign.Center,
                 style = Body,
                 text = getOnboardingSubtitle(page)
