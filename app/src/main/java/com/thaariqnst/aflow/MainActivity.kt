@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.thaariqnst.aflow.ui.onboarding.OnboardingScreen
 import com.thaariqnst.aflow.ui.theme.AflowTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,10 +21,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             AflowTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Aflow",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    OnboardingScreen(
+                        modifier = Modifier.padding(innerPadding),
+                        isLoggedIn = false
+                    ) { }
+//                    Greeting(
+//                        name = "Aflow",
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
                 }
             }
         }
