@@ -25,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -104,6 +105,7 @@ fun OnboardingScreen(
                                     modifier = Modifier.fillMaxWidth(),
                                     textAlign = TextAlign.Center,
                                     style = Title4,
+                                    fontWeight = FontWeight.Bold,
                                     text = LocaleString.GET_STARTED
                                 )
                             }
@@ -129,6 +131,7 @@ fun OnboardingScreen(
                                     modifier = Modifier.fillMaxWidth(),
                                     textAlign = TextAlign.Center,
                                     style = Title4,
+                                    fontWeight = FontWeight.Bold,
                                     text = LocaleString.CONTINUE
                                 )
                             }
@@ -141,6 +144,7 @@ fun OnboardingScreen(
                                 Text(
                                     textAlign = TextAlign.Center,
                                     style = Title4,
+                                    fontWeight = FontWeight.Bold,
                                     text = LocaleString.SKIP
                                 )
                             }
