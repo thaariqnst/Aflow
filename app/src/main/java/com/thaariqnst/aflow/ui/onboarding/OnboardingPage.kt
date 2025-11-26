@@ -24,7 +24,7 @@ fun OnboardingPage(modifier: Modifier, page: Int) {
     ) {
         Image(
             modifier = Modifier.fillMaxWidth().padding(bottom = 20.dp),
-            painter = painterResource(R.drawable.on_boarding_1),
+            painter = painterResource(getOnboardingImage(page)),
             contentDescription = "on_boarding_1",
             contentScale = ContentScale.FillWidth
         )
@@ -48,8 +48,18 @@ fun OnboardingPage(modifier: Modifier, page: Int) {
     }
 }
 
+fun getOnboardingImage(page: Int): Int {
+    return when (page) {
+        0 -> R.drawable.on_boarding_1
+        1 -> R.drawable.on_boarding_1
+        2 -> R.drawable.on_boarding_1
+        3 -> R.drawable.on_boarding_1
+        else -> R.drawable.on_boarding_1
+    }
+}
+
 fun getOnboardingTitle(page: Int): String {
-    return when(page) {
+    return when (page) {
         0 -> LocaleString.WELCOME_T0_AFLOW
         1 -> LocaleString.BUILD_LASTING_HABITS
         2 -> LocaleString.STAY_CONSISTENT_EVERY_DAY
@@ -59,7 +69,7 @@ fun getOnboardingTitle(page: Int): String {
 }
 
 fun getOnboardingSubtitle(page: Int): String {
-    return when(page) {
+    return when (page) {
         0 -> LocaleString.AFLOW_HELPS_YOU_TRACK_YOUR_GOALS
         1 -> LocaleString.TRACK_YOUR_HABITS_STAY_FOCUSED_AND_ACHIEVE_YOUR_GOALS_WITH_EASE
         2 -> LocaleString.SMALL_STEPS_LEAD_TO_BIG_PROGRESS
