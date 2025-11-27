@@ -12,17 +12,17 @@ Developed using **Kotlin, Jetpack Compose, and MVVM architecture**, Aflow delive
 Every interaction is crafted to be simple, motivating, and user-friendly—supporting users in creating meaningful change one day at a time.
 
 ### **Features**
-•	🧩 Create & track habits with an elegant, minimal UI
-•	📅 Daily progress tracking that keeps you accountable
-•	🎯 Goal-focused system designed to encourage consistent improvement
-•	🔁 Smart reminders & notifications
-•	⚡ Built with modern Android tools for fast, smooth performance
-•	🌙 Beautiful UI with clean typography and thoughtful animations
+*	🧩 Create & track habits with an elegant, minimal UI
+*	📅 Daily progress tracking that keeps you accountable
+*	🎯 Goal-focused system designed to encourage consistent improvement
+*	🔁 Smart reminders & notifications
+*	⚡ Built with modern Android tools for fast, smooth performance
+*	🌙 Beautiful UI with clean typography and thoughtful animations
   
 ### **Tech Stack**
-•	Kotlin
-•	Jetpack Compose
-•	MVVM + ViewModel
-•	Kotlin Flows / StateFlow
-•	Coroutines
-•	Navigation Compose
+*	Kotlin
+*	Jetpack Compose
+*	MVVM + ViewModel
+*	Kotlin Flows / StateFlow
+*	Coroutines
+*	Navigation Compose
