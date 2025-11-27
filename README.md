@@ -1,4 +1,6 @@
-# **Aflow - Habit and Goals, and go with the flow**  
+# **Aflow - Habit and Goals, and go with the flow**
+
+<img src="https://raw.githubusercontent.com/thaariqnst/Aflow/07b92a4a6142ed3b6ba7b543b23ebae05f160333/app/src/main/res/drawable/aflow_icon.png" width="120" align="right"/>
 
 ### **Overview**
 
