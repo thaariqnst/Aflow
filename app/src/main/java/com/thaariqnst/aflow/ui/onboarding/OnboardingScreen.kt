@@ -17,11 +17,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -35,17 +31,13 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun OnboardingScreen(
-    modifier: Modifier,
-    isLoggedIn: Boolean,
     onSkipClicked: () -> Unit,
 ) {
-    var onBoardingPage: Int by remember { mutableIntStateOf(0) }
+    val coroutineScope = rememberCoroutineScope()
     val onboardingPagerState = rememberPagerState(
         initialPage = 0,
         pageCount = { 4 }
     )
-    val coroutineScope = rememberCoroutineScope()
-
 
     Scaffold {
         Column(
@@ -159,8 +151,5 @@ fun OnboardingScreen(
 @Preview(showSystemUi = true)
 @Composable
 fun DefaultPreview() {
-    OnboardingScreen(
-        modifier = Modifier,
-        isLoggedIn = false
-    ) { }
+    OnboardingScreen { }
 }

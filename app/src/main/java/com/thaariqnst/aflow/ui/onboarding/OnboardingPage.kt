@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.thaariqnst.aflow.ui.onboarding.OnboardingUtil.getOnboardingImage
@@ -36,7 +35,6 @@ fun OnboardingPage(modifier: Modifier, page: Int) {
             Text(
                 modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
                 textAlign = TextAlign.Center,
-                fontWeight = FontWeight.Bold,
                 style = Title1,
                 text = getOnboardingTitle(page)
             )
