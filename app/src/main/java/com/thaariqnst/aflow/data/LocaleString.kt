@@ -28,4 +28,7 @@ object LocaleString {
 
     // W
     const val WELCOME_T0_AFLOW = "Welcome to Aflow"
+
+    // Y
+    const val YOUR_HABITS = "Your Habits"
 }
