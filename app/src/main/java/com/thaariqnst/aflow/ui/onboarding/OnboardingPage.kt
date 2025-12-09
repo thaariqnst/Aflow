@@ -14,8 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.thaariqnst.aflow.ui.onboarding.OnboardingUtil.getOnboardingImage
 import com.thaariqnst.aflow.ui.onboarding.OnboardingUtil.getOnboardingSubtitle
 import com.thaariqnst.aflow.ui.onboarding.OnboardingUtil.getOnboardingTitle
-import com.thaariqnst.aflow.ui.theme.Body
-import com.thaariqnst.aflow.ui.theme.Title1
+import com.thaariqnst.aflow.ui.theme.*
 
 @Composable
 fun OnboardingPage(modifier: Modifier, page: Int) {
@@ -36,11 +35,13 @@ fun OnboardingPage(modifier: Modifier, page: Int) {
                 modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
                 textAlign = TextAlign.Center,
                 style = Title1,
+                color = onPrimaryContainerLight,
                 text = getOnboardingTitle(page)
             )
             Text(
                 textAlign = TextAlign.Center,
                 style = Body,
+                color = onPrimaryContainerLight,
                 text = getOnboardingSubtitle(page)
             )
         }

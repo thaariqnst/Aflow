@@ -44,7 +44,7 @@ fun OnboardingScreen(
             modifier = Modifier
                 .padding(it)
                 .fillMaxSize()
-                .background(color = bgWhite),
+                .background(color = surfaceLight),
         ) {
             HorizontalPager(
                 state = onboardingPagerState,
@@ -65,7 +65,7 @@ fun OnboardingScreen(
                 ) {
                     if (onboardingPagerState.currentPage != 0){
                         repeat(onboardingPagerState.pageCount) { iteration ->
-                            val color = if (onboardingPagerState.currentPage == iteration) colorAccent else Color.LightGray
+                            val color = if (onboardingPagerState.currentPage == iteration) primaryContainerLight else Color.LightGray
                             Box(
                                 modifier = Modifier
                                     .padding(2.dp)
@@ -85,7 +85,7 @@ fun OnboardingScreen(
                         ) {
                             Button(
                                 modifier = Modifier.fillMaxWidth().height(48.dp),
-                                colors = ButtonColors(colorAccent, black, colorAccent, black),
+                                colors = ButtonColors(primaryContainerLight, black, primaryContainerLight, black),
                                 shape = RoundedCornerShape(99.dp),
                                 onClick = {
                                     coroutineScope.launch {
@@ -98,6 +98,7 @@ fun OnboardingScreen(
                                     textAlign = TextAlign.Center,
                                     style = Title4,
                                     fontWeight = FontWeight.Bold,
+                                    color = onPrimaryContainerLight,
                                     text = LocaleString.GET_STARTED
                                 )
                             }
@@ -111,10 +112,11 @@ fun OnboardingScreen(
                         ) {
                             Button(
                                 modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp).height(48.dp),
-                                colors = ButtonColors(colorAccent, black, colorAccent, black),
+                                colors = ButtonColors(primaryContainerLight, black, primaryContainerLight, black),
                                 shape = RoundedCornerShape(99.dp),
                                 onClick = {
-                                    coroutineScope.launch {
+                                    if (onboardingPagerState.currentPage == onboardingPagerState.pageCount - 1) onSkipClicked.invoke()
+                                    else coroutineScope.launch {
                                         if (onboardingPagerState.currentPage <= 4) onboardingPagerState.animateScrollToPage(onboardingPagerState.currentPage + 1)
                                     }
                                 }
@@ -124,6 +126,7 @@ fun OnboardingScreen(
                                     textAlign = TextAlign.Center,
                                     style = Title4,
                                     fontWeight = FontWeight.Bold,
+                                    color = onPrimaryContainerLight,
                                     text = LocaleString.CONTINUE
                                 )
                             }
@@ -137,6 +140,7 @@ fun OnboardingScreen(
                                     textAlign = TextAlign.Center,
                                     style = Title4,
                                     fontWeight = FontWeight.Bold,
+                                    color = onPrimaryContainerLight,
                                     text = LocaleString.SKIP
                                 )
                             }
