@@ -68,5 +68,4 @@ dependencies {
 
     // google fonts
     implementation(libs.ui.text.google.fonts)
-
 }
