@@ -42,7 +42,7 @@ fun HomeScreen(
                     )
                 },
                 actions = {
-                    IconButton(onClick = { navController.navigate("onboarding") }) {
+                    IconButton(onClick = { navController.navigate("Onboarding") }) {
                         Icon(
                             imageVector = Icons.Default.DateRange,
                             contentDescription = "Open Calendar"
