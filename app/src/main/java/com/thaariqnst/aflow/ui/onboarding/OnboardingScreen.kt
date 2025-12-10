@@ -65,7 +65,7 @@ fun OnboardingScreen(
                 ) {
                     if (onboardingPagerState.currentPage != 0){
                         repeat(onboardingPagerState.pageCount) { iteration ->
-                            val color = if (onboardingPagerState.currentPage == iteration) primaryContainerLight else Color.LightGray
+                            val color = if (onboardingPagerState.currentPage == iteration) primaryLight else Color.LightGray
                             Box(
                                 modifier = Modifier
                                     .padding(2.dp)

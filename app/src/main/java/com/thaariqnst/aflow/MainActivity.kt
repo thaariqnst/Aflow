@@ -1,7 +1,6 @@
 package com.thaariqnst.aflow
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -16,6 +15,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.thaariqnst.aflow.ui.bottomnav.BottomNavBar
+import com.thaariqnst.aflow.ui.createhabit.CreateHabitScreen
 import com.thaariqnst.aflow.ui.home.HomeScreen
 import com.thaariqnst.aflow.ui.onboarding.OnboardingScreen
 import com.thaariqnst.aflow.ui.theme.AflowTheme
@@ -64,11 +64,15 @@ class MainActivity : ComponentActivity() {
                             }
                         }
 
-                        composable("Home") { HomeScreen(navController) { Toast.makeText(this@MainActivity, "Create New Habit", Toast.LENGTH_SHORT).show() } }
+                        composable("Home") { HomeScreen(
+                            onHabitCardClicked = { navController.navigate("HabitDetails") },
+                            onFabClicked = { navController.navigate("CreateNewHabit") },
+                            onCalendarClicked = { navController.navigate("Onboarding") }
+                        ) }
                         composable("Analytics") {  }
                         composable("Settings") {  }
 
-                        composable("CreateNewHabit") {  }
+                        composable("CreateNewHabit") { CreateHabitScreen() }
                         composable("HabitDetails") {  }
                     }
                 }

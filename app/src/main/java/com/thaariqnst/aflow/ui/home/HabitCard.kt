@@ -37,7 +37,7 @@ fun HabitCard(
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
         onClick = {
-            isChecked = !isChecked
+            onClicked.invoke()
         }
     ) {
         Row(
@@ -62,7 +62,7 @@ fun HabitCard(
                 )
             }
 
-            CheckButton(isChecked)
+            CheckButton(isChecked) { isChecked = !isChecked }
         }
     }
 }

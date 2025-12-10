@@ -27,8 +27,9 @@ import com.thaariqnst.aflow.ui.theme.*
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navController: NavController,
+    onHabitCardClicked: () -> Unit,
     onFabClicked: () -> Unit,
+    onCalendarClicked: () -> Unit,
 ) {
     val scrollBarBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
@@ -59,7 +60,9 @@ fun HomeScreen(
                     )
                 },
                 actions = {
-                    IconButton(onClick = { navController.navigate("Onboarding") }) {
+                    IconButton(
+                        onClick = { onCalendarClicked.invoke() }
+                    ) {
                         Icon(
                             imageVector = Icons.Default.DateRange,
                             contentDescription = "Open Calendar"
@@ -77,7 +80,7 @@ fun HomeScreen(
                 .padding(horizontal = 16.dp)
         ) {
             items(4) {
-                HabitCard(it) {  }
+                HabitCard(it) { onHabitCardClicked.invoke() }
             }
         }
     }

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,14 +34,19 @@ fun HabitIcon() {
 }
 
 @Composable
-fun CheckButton(isChecked: Boolean) {
-    Icon(
-        modifier = Modifier.size(48.dp),
-        painter = painterResource(
-            if (isChecked) R.drawable.btn_checked_filled_24
-            else R.drawable.btn_checked_outlined_24
-        ),
-        contentDescription = null,
-        tint = Color.Unspecified
-    )
+fun CheckButton(
+    isChecked: Boolean,
+    onClick: () -> Unit
+) {
+    IconButton(onClick = { onClick.invoke() }) {
+        Icon(
+            modifier = Modifier.size(48.dp),
+            painter = painterResource(
+                if (isChecked) R.drawable.btn_checked_filled_24
+                else R.drawable.btn_checked_outlined_24
+            ),
+            contentDescription = null,
+            tint = Color.Unspecified,
+        )
+    }
 }
