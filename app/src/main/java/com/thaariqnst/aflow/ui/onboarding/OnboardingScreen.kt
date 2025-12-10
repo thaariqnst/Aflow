@@ -85,7 +85,7 @@ fun OnboardingScreen(
                         ) {
                             Button(
                                 modifier = Modifier.fillMaxWidth().height(48.dp),
-                                colors = ButtonColors(primaryContainerLight, black, primaryContainerLight, black),
+                                colors = ButtonColors(primaryLight, black, primaryLight, black),
                                 shape = RoundedCornerShape(99.dp),
                                 onClick = {
                                     coroutineScope.launch {
@@ -98,7 +98,7 @@ fun OnboardingScreen(
                                     textAlign = TextAlign.Center,
                                     style = Title4,
                                     fontWeight = FontWeight.Bold,
-                                    color = onPrimaryContainerLight,
+                                    color = onPrimaryLight,
                                     text = LocaleString.GET_STARTED
                                 )
                             }
@@ -112,7 +112,7 @@ fun OnboardingScreen(
                         ) {
                             Button(
                                 modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp).height(48.dp),
-                                colors = ButtonColors(primaryContainerLight, black, primaryContainerLight, black),
+                                colors = ButtonColors(primaryLight, black, primaryLight, black),
                                 shape = RoundedCornerShape(99.dp),
                                 onClick = {
                                     if (onboardingPagerState.currentPage == onboardingPagerState.pageCount - 1) onSkipClicked.invoke()
@@ -126,7 +126,7 @@ fun OnboardingScreen(
                                     textAlign = TextAlign.Center,
                                     style = Title4,
                                     fontWeight = FontWeight.Bold,
-                                    color = onPrimaryContainerLight,
+                                    color = onPrimaryLight,
                                     text = LocaleString.CONTINUE
                                 )
                             }
@@ -140,7 +140,7 @@ fun OnboardingScreen(
                                     textAlign = TextAlign.Center,
                                     style = Title4,
                                     fontWeight = FontWeight.Bold,
-                                    color = onPrimaryContainerLight,
+                                    color = primaryLight,
                                     text = LocaleString.SKIP
                                 )
                             }

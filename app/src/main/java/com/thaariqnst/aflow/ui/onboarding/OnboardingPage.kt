@@ -41,7 +41,7 @@ fun OnboardingPage(modifier: Modifier, page: Int) {
             Text(
                 textAlign = TextAlign.Center,
                 style = Body,
-                color = onPrimaryContainerLight,
+                color = primaryLight,
                 text = getOnboardingSubtitle(page)
             )
         }

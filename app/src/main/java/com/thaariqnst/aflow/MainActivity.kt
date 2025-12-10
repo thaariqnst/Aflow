@@ -1,13 +1,22 @@
 package com.thaariqnst.aflow
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.thaariqnst.aflow.ui.bottomnav.BottomNavBar
+import com.thaariqnst.aflow.ui.home.HomeScreen
 import com.thaariqnst.aflow.ui.onboarding.OnboardingScreen
 import com.thaariqnst.aflow.ui.theme.AflowTheme
 
@@ -17,9 +26,50 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AflowTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    OnboardingScreen {
+                val navController = rememberNavController()
+                val navBackStackEntry by navController.currentBackStackEntryAsState()
+                val currentRoute = navBackStackEntry?.destination?.route
+                val bottomBarRoutes = listOf("Home", "Analytics", "Settings")
 
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    bottomBar = {
+                        if (currentRoute in bottomBarRoutes) {
+                            BottomNavBar(
+                                currentRoute = currentRoute,
+                                onItemSelected ={ route ->
+                                    navController.navigate(route) {
+                                        popUpTo("Home") { inclusive = false }
+                                        launchSingleTop = true
+                                    }
+                                }
+                            )
+                        }
+                    }
+                )
+                { innerPadding ->
+                    NavHost(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding)
+                            .consumeWindowInsets(innerPadding),
+                        navController = navController,
+                        startDestination = "Onboarding"
+                    ) {
+                        composable("Onboarding") {
+                            OnboardingScreen {
+                                navController.navigate("Home") {
+                                    popUpTo("Onboarding") { inclusive = true }
+                                }
+                            }
+                        }
+
+                        composable("Home") { HomeScreen(navController) { Toast.makeText(this@MainActivity, "Create New Habit", Toast.LENGTH_SHORT).show() } }
+                        composable("Analytics") {  }
+                        composable("Settings") {  }
+
+                        composable("CreateNewHabit") {  }
+                        composable("HabitDetails") {  }
                     }
                 }
             }
