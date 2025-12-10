@@ -14,6 +14,9 @@ object LocaleString {
     // G
     const val GET_STARTED = "Get Started"
 
+    // N
+    const val NEW_HABIT = "New Habit"
+
     // R
     const val REACH_YOUR_GOALS_WITH_CLARITY = "Reach Your Goals with Clarity"
 
