@@ -4,13 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.getValue
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.thaariqnst.aflow.ui.bottomnav.BottomNavBar
 import com.thaariqnst.aflow.ui.home.HomeScreen
 import com.thaariqnst.aflow.ui.onboarding.OnboardingScreen
 import com.thaariqnst.aflow.ui.theme.AflowTheme
@@ -21,23 +21,48 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AflowTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    App()
+                val navController = rememberNavController()
+                val navBackStackEntry by navController.currentBackStackEntryAsState()
+                val currentRoute = navBackStackEntry?.destination?.route
+                val bottomBarRoutes = listOf("Home", "Analytics", "Settings")
+
+                Scaffold(
+                    bottomBar = {
+                        if (currentRoute in bottomBarRoutes) {
+                            BottomNavBar(
+                                currentRoute = currentRoute,
+                                onItemSelected ={ route ->
+                                    navController.navigate(route) {
+                                        popUpTo("Home") { inclusive = false }
+                                        launchSingleTop = true
+                                    }
+                                }
+                            )
+                        }
+                    }
+                )
+                { innerPadding ->
+                    NavHost(
+                        navController = navController,
+                        startDestination = "Onboarding"
+                    ) {
+                        composable("Onboarding") {
+                            OnboardingScreen {
+                                navController.navigate("Home") {
+                                    popUpTo("Onboarding") { inclusive = true }
+                                }
+                            }
+                        }
+
+                        composable("Home") { HomeScreen(navController) }
+                        composable("Analytics") {  }
+                        composable("Settings") {  }
+
+                        composable("CreateNewHabit") {  }
+                        composable("HabitDetails") {  }
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun App() {
-    val navController = rememberNavController()
-
-    NavHost(
-        navController = navController,
-        startDestination = "onboarding"
-    ) {
-        composable("onboarding") { OnboardingScreen { navController.navigate("home") } }
-        composable("home") { HomeScreen(navController) }
     }
 }
