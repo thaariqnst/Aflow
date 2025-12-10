@@ -3,10 +3,13 @@ package com.thaariqnst.aflow.ui.home
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -24,7 +27,8 @@ import com.thaariqnst.aflow.ui.theme.*
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navController: NavController
+    navController: NavController,
+    onFabClicked: () -> Unit,
 ) {
     val scrollBarBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
@@ -33,6 +37,19 @@ fun HomeScreen(
             .fillMaxSize()
             .nestedScroll(scrollBarBehavior.nestedScrollConnection)
             .background(surfaceContainerLowLight),
+        floatingActionButton = {
+            FloatingActionButton(
+                containerColor = primaryLight,
+                onClick = { onFabClicked.invoke() }
+            ) {
+                Icon(
+                    modifier = Modifier.size(32.dp),
+                    imageVector = Icons.Default.Add,
+                    contentDescription = "Create New Habit",
+                    tint = onPrimaryLight,
+                )
+            }
+        },
         topBar = {
             TopAppBar(
                 title = {

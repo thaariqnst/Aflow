@@ -1,11 +1,16 @@
 package com.thaariqnst.aflow
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -27,6 +32,7 @@ class MainActivity : ComponentActivity() {
                 val bottomBarRoutes = listOf("Home", "Analytics", "Settings")
 
                 Scaffold(
+                    modifier = Modifier.fillMaxSize(),
                     bottomBar = {
                         if (currentRoute in bottomBarRoutes) {
                             BottomNavBar(
@@ -43,6 +49,10 @@ class MainActivity : ComponentActivity() {
                 )
                 { innerPadding ->
                     NavHost(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding)
+                            .consumeWindowInsets(innerPadding),
                         navController = navController,
                         startDestination = "Onboarding"
                     ) {
@@ -54,7 +64,7 @@ class MainActivity : ComponentActivity() {
                             }
                         }
 
-                        composable("Home") { HomeScreen(navController) }
+                        composable("Home") { HomeScreen(navController) { Toast.makeText(this@MainActivity, "Create New Habit", Toast.LENGTH_SHORT).show() } }
                         composable("Analytics") {  }
                         composable("Settings") {  }
 
