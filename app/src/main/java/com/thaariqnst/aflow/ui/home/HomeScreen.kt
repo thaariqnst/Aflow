@@ -1,5 +1,6 @@
 package com.thaariqnst.aflow.ui.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,18 +17,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.thaariqnst.aflow.data.LocaleString
-import com.thaariqnst.aflow.ui.theme.Title3
+import com.thaariqnst.aflow.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navController: NavController
+) {
     val scrollBarBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
-            .nestedScroll(scrollBarBehavior.nestedScrollConnection),
+            .nestedScroll(scrollBarBehavior.nestedScrollConnection)
+            .background(surfaceContainerLowLight),
         topBar = {
             TopAppBar(
                 title = {
@@ -37,7 +42,7 @@ fun HomeScreen() {
                     )
                 },
                 actions = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = { navController.navigate("onboarding") }) {
                         Icon(
                             imageVector = Icons.Default.DateRange,
                             contentDescription = "Open Calendar"
@@ -54,8 +59,8 @@ fun HomeScreen() {
                 .padding(contentPadding)
                 .padding(horizontal = 16.dp)
         ) {
-            items(100) {
-                HabitCard(it)
+            items(4) {
+                HabitCard(it) {  }
             }
         }
     }

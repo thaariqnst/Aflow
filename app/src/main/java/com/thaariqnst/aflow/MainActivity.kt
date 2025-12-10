@@ -38,6 +38,6 @@ fun App() {
         startDestination = "onboarding"
     ) {
         composable("onboarding") { OnboardingScreen { navController.navigate("home") } }
-        composable("home") { HomeScreen() }
+        composable("home") { HomeScreen(navController) }
     }
 }
