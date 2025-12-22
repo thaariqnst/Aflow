@@ -11,10 +11,22 @@ object LocaleString {
     // C
     const val CONTINUE = "Continue"
 
+    // D
+    const val DESCRIPTION = "Description"
+    const val DESCRIPTION_OPTIONAL = "Description (Optional)"
+
+    // E
+    const val EG_DRINK_WATER = "e.g Drink Water"
+    const val EG_GLASSES_A_DAY = "e.g 8 glasses a day"
+
     // G
     const val GET_STARTED = "Get Started"
 
+    // H
+    const val HABIT = "Habit"
+
     // N
+    const val NAME = "Name"
     const val NEW_HABIT = "New Habit"
 
     // R

@@ -2,6 +2,7 @@ package com.thaariqnst.aflow.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val black = Color(0xFF111827)
+val textFieldOutline = Color(0xFFE5E7EB)
 
 val primaryLight = Color(0xFF2E6A44)
 val onPrimaryLight = Color(0xFFFFFFFF)

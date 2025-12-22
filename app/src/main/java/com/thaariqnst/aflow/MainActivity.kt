@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
                             .padding(innerPadding)
                             .consumeWindowInsets(innerPadding),
                         navController = navController,
-                        startDestination = "Onboarding"
+                        startDestination = "CreateNewHabit" //"Onboarding"
                     ) {
                         composable("Onboarding") {
                             OnboardingScreen {
@@ -72,7 +72,9 @@ class MainActivity : ComponentActivity() {
                         composable("Analytics") {  }
                         composable("Settings") {  }
 
-                        composable("CreateNewHabit") { CreateHabitScreen() }
+                        composable("CreateNewHabit") { CreateHabitScreen(
+                            onBackClicked = { navController.popBackStack() }
+                        ) }
                         composable("HabitDetails") {  }
                     }
                 }
